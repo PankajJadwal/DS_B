@@ -19,20 +19,10 @@ void push(stack *s, int x)
 
 char pop(stack *s)
 {
-    // if (isEmpty(s))
-    // {
-    //     return '\0'; // return null character if empty
-    // }
+    
     return s->arr[(s->top)--];
 }
-// void display(stack *s)
-// {
-//     for (int i = 0; i <= s->top; i++)
-//     {
-//         printf("%d  ", s->arr[i]);
-//     }
-//     printf("\n");
-// }
+
 
 int fun(char arr[])
 {
