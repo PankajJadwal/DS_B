@@ -89,6 +89,32 @@ node* delete_p(node* head, int pos)
     
     
 }
+void getMedian(node* head)
+{
+    // int count=0;
+    // node* c =head;
+    // while(c)
+    // {
+    //     count=count+1;
+    //     c=c->next;
+    // }
+    // c=head;
+    // for(int i=1;i<=count/2;i++)
+    // {
+    //     c=c->next;
+
+    // }
+    // printf("%d ", c->data);
+    node* slow=head;
+    node* fast=head;
+    while(fast!=NULL && fast->next!=NULL )
+    {
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    printf("%d ", slow->data);
+
+}
 
 int main()
 {
@@ -96,20 +122,25 @@ int main()
     node *first = create(20);
     node *second = create(30);
     node *third = create(40);
+    // node *forth = create(50);
     head->next=first;
     first->next=second;
     second->next=third;
+    // third->next=forth;
     display(head);
-    head=insert_b(head,100);
-    display(head);
-    head=insert_l(head,1000);
-    display(head);
-    head=insert_p(head,999,3);
-    display(head);
-    head=delete_b(head);
-    display(head);
-    head=delete_l(head);
-    display(head);
-    head=delete_p(head,4);
-    display(head);
+    getMedian(head);
+    // node* temp=getMedian(head);
+    // printf("%d  ", temp->data);
+    // head=insert_b(head,100);
+    // display(head);
+    // head=insert_l(head,1000);
+    // display(head);
+    // head=insert_p(head,999,3);
+    // display(head);
+    // head=delete_b(head);
+    // display(head);
+    // head=delete_l(head);
+    // display(head);
+    // head=delete_p(head,4);
+    // display(head);
 }
