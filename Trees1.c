@@ -111,6 +111,7 @@ int main()
     printf("Number of  nodes--> %d\n  ",getcount(root));
     printf("Height of the tree --> %d\n  ",getheight(root));
     printf("count of  all the nodes--> %d\n  ",getcountnodes(root));
+    
 
 
 

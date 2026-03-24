@@ -188,15 +188,15 @@ int main()
     node *root = init(10);
     root->left = init(20);
     root->right = init(30);
-    root->left->left = init(40);
+    root->left->right = init(40);
     root->right->right = init(50);
-    preorder(root);
-    printf("\n");
-    inorder(root);
-    printf("\n");
-    postorder(root);
-    printf("\n");
-    level_order_traversal(root);
+    // preorder(root);
+    // printf("\n");
+    // inorder(root);
+    // printf("\n");
+    // postorder(root);
+    // printf("\n");
+    // level_order_traversal(root);
     left_view(root);
-    right_view(root);
+    // right_view(root);
 }
