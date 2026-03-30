@@ -1,6 +1,6 @@
 // Level order traversal
-//left view
-//right view
+// left view
+// right view
 // Preorder inorder Postorder
 
 #include <stdio.h>
@@ -155,6 +155,34 @@ void left_view(node *root)
         }
     }
 }
+int max(int a, int b)
+{
+    return a>=b?a:b;
+}
+int tree_width(node *root)
+{
+    queue q;
+    init_q(&q);
+    push(&q, root);
+    int maxx = 1;
+    while (!is_empty(&q))
+    {
+        int level_size = q.rear - q.front + 1; //
+        maxx = max(level_size, maxx);
+        node *c = pop(&q);
+
+        if (c->left != NULL)
+        {
+            push(&q, c->left);
+        }
+        if (c->right != NULL)
+        {
+            push(&q, c->right);
+        }
+    }
+    return maxx;
+}
+
 void right_view(node *root)
 {
     queue q;
@@ -167,7 +195,7 @@ void right_view(node *root)
         for (int i = 0; i < level_size; i++)
         {
             c = pop(&q);
-            if (i == level_size-1)
+            if (i == level_size - 1)
             {
                 printf("%d ", c->data);
             }
@@ -183,6 +211,32 @@ void right_view(node *root)
         }
     }
 }
+int getCountNonLeaf(node* root)
+{
+     if(root==NULL)
+    {
+        return 0;
+    }
+    if(root->left==NULL && root->right==NULL)
+    {
+        return 0;
+    }
+   
+    return 1+(getCountNonLeaf(root->left)+getCountNonLeaf(root->right));
+}
+int getCountLeaf(node* root)
+{
+     if(root==NULL)
+    {
+        return 0;
+    }
+    if(root->left==NULL && root->right==NULL)
+    {
+        return 1;
+    }
+   
+    return (getCountLeaf(root->left)+getCountLeaf(root->right));
+}
 int main()
 {
     node *root = init(10);
@@ -197,6 +251,9 @@ int main()
     // postorder(root);
     // printf("\n");
     // level_order_traversal(root);
-    left_view(root);
+    // left_view(root);
     // right_view(root);
+    // printf("Tree width-->%d", tree_width(root));
+    printf("Count of non leaf nodes-->%d\n", getCountNonLeaf(root));
+    printf("Count of leaf nodes-->%d\n", getCountLeaf(root));
 }
